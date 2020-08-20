@@ -98,7 +98,7 @@ def sync(pathname, bucket):
     def handle_directory(target):
         for p in target.iterdir():
             if p.is_dir(): handle_directory(p)
-            if p.is_file(): upload_file(s3_bucket, str(p), str(p.relative_to(root)))
+            if p.is_file(): upload_file(s3_bucket, '/'.join(str(p).split('\\')), '/'.join(str(p.relative_to(root)).split('\\')))
 
     handle_directory(root)
 
