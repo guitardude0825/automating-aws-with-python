@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""Class for S3 Buckets."""
+"""Classes for S3 Buckets."""
 
 from pathlib import Path
 import mimetypes
@@ -142,7 +142,6 @@ class BucketManager:
                 digests = (h.digest() for h in hashes)
                 hash = self.hash_data(reduce(lambda x, y: x + y, digests))
                 return '"{}-{}"'.format(hash.hexdigest(), len(hashes))
-
 
     def upload_file(self, bucket, path, key):
         """Upload path to s3_bucket at key."""
